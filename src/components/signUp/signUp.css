@@ -1,0 +1,11 @@
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo {
+  margin-bottom: 40px;
+}

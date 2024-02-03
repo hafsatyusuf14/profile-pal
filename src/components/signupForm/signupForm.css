@@ -1,0 +1,56 @@
+.form-container {
+  width: 500px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.form-container input {
+  width: calc(100% - 30px);
+  font-size: 16px;
+  padding: 15px;
+  margin-bottom: 10px; /* Adjust margin-bottom if needed */
+  border: 1px solid gray;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-container input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 9px hsl(168, 58%, 75%);
+}
+
+.form-container input.error-border {
+  border-color: red; /* Set border color to red for inputs with errors */
+}
+
+.error {
+  color: red; /* Set error message color to red */
+  font-size: 0.8em;
+  /* Adjust error message font size */
+}
+.error.show {
+  display: block;
+  color: red;
+}
+
+.submit-button {
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  background-color: #27a9a1;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+}

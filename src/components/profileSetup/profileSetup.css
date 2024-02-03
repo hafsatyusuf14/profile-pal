@@ -1,0 +1,126 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container {
+  width: 700px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background-color: rgb(211, 205, 205);
+  color: black;
+}
+
+.create-account-button {
+  color: white;
+  background-color: #27a9a1;
+}
+
+.back-button,
+.create-account-button {
+  width: 30%;
+
+  font-size: 16px;
+
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  margin-bottom: 9px;
+}
+.upload-container {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.upload {
+  color: #27a9a1;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.name-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjust the margin bottom as needed */
+}
+
+.profile-group {
+  flex: 1;
+  margin-right: 10px;
+  margin-bottom: 10px; /* Adjust the margin right for spacing */
+}
+
+.profile-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.profile-container input {
+  width: calc(100% - 30px);
+  font-size: 16px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.profile-container input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 9px hsl(168, 58%, 75%);
+}
+
+.form-container input.error-border {
+  border-color: red; /* Set border color to red for inputs with errors */
+}
+
+.error {
+  color: red; /* Set error message color to red */
+  font-size: 0.8em;
+  /* Adjust error message font size */
+}
+
+.save-button {
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  background-color: #27a9a1;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+}
