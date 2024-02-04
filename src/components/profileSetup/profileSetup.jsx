@@ -17,8 +17,22 @@ const ProfileSetup = () => {
 
   const saveUserData = (userData) => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    users.push(userData);
+    // Create a URL for the profile picture if it exists
+    const profilePictureURL = userData.profilePicture
+      ? URL.createObjectURL(userData.profilePicture)
+      : null;
+    // Create a new user object with profile picture URL
+    const newUser = {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+      mobileNumber: userData.mobileNumber,
+      dob: userData.dob,
+      profilePicture: profilePictureURL,
+    };
+    users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
+    console.log(newUser); // Log the new user object with the profile picture URL
   };
 
   return (

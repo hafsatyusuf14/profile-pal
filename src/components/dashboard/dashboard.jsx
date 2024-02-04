@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboardContainer}>
-      <h2>User Dashboard</h2>
+      <h2>User Profiles</h2>
       <div className={styles.userCardsContainer}>
         {users.map((user, index) => (
           <div key={index} className={styles.userCardWrapper}>
@@ -23,7 +23,7 @@ const Dashboard = () => {
               lastname={user.lastName}
               email={user.email}
               dob={user.dob}
-              image={user.image}
+              image={user.profilePicture}
               mobile={user.mobileNumber}
             />
           </div>

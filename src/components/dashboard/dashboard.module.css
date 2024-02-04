@@ -3,6 +3,19 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dashboardContainer h2 {
+  font-size: 40px; /* Increase font size */
+  color: #333; /* Set text color */
+  text-transform: uppercase; /* Convert text to uppercase */
+  text-align: center; /* Center-align text */
+  padding: 20px 0; /* Add padding for spacing */
+  border-bottom: 2px solid #ccc; /* Add a bottom border */
+  margin-bottom: 30px; /* Add margin at the bottom */
 }
 
 .userCardsContainer {
@@ -27,5 +40,11 @@
 @media screen and (max-width: 600px) {
   .userCardWrapper {
     width: calc(100% - 20px); /* 1 card per row for phones */
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dashboardContainer h2 {
+    font-size: 26px;
   }
 }
