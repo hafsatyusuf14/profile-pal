@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import "./signupForm.css";
+import styles from "./signupForm.module.css"; // Import CSS module file for styling
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className={styles.formContainer}>
       <Formik
         initialValues={{
           email: "",
@@ -38,40 +38,49 @@ const SignupForm = () => {
             setSubmitting(false);
             setEmailError("Email is already in use");
           } else {
-            localStorage.setItem("email", values.email); // Store email in localStorage
+            localStorage.setItem("email", values.email);
             navigate("/profileSetup");
           }
         }}
       >
         {(formik) => (
           <Form>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <Field type="text" id="email" name="email" className="input" />
+            <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.label}>
+                Email
+              </label>
+              <Field
+                type="text"
+                id="email"
+                name="email"
+                className={styles.input}
+              />
               <ErrorMessage
                 name="email"
                 component="div"
-                className={`error ${
+                className={`${styles.error} ${
                   submitted && formik.touched.email && formik.errors.email
                     ? "show"
                     : ""
                 }`}
               />
-              {emailError && <div className="error">{emailError}</div>}
+              {emailError && <div className={styles.error}>{emailError}</div>}
             </div>
 
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
+            <div className={styles.formGroup}>
+              <label htmlFor="password" className={styles.label}>
+                Password
+              </label>
               <Field
                 type="password"
                 id="password"
                 name="password"
-                className="input"
+                className={styles.input}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className={`error ${
+                className={`${styles.error} ${
                   submitted && formik.touched.password && formik.errors.password
                     ? "show"
                     : ""
@@ -79,18 +88,20 @@ const SignupForm = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm Password</label>
+            <div className={styles.formGroup}>
+              <label htmlFor="confirmPassword" className={styles.label}>
+                Confirm Password
+              </label>
               <Field
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                className="input"
+                className={styles.input}
               />
               <ErrorMessage
                 name="confirmPassword"
                 component="div"
-                className={`error ${
+                className={`${styles.error} ${
                   submitted &&
                   formik.touched.confirmPassword &&
                   formik.errors.confirmPassword
@@ -101,7 +112,7 @@ const SignupForm = () => {
             </div>
 
             <button
-              className="submit-button"
+              className={styles.submitButton}
               type="submit"
               disabled={!formik.isValid || !formik.dirty}
               onClick={() => {

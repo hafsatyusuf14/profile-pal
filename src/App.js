@@ -14,7 +14,7 @@ function App() {
         {" "}
         {/* Apply the CSS class here */}
         <Routes>
-          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/" element={<SignUp />} />
           <Route path="/profileSetup" element={<ProfileSetup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />

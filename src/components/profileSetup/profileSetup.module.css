@@ -68,12 +68,6 @@
   font-weight: bold;
 }
 
-.name-group {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px; /* Adjust the margin bottom as needed */
-}
-
 .profile-group {
   flex: 1;
   margin-right: 10px;
@@ -123,4 +117,25 @@
   padding: 20px;
   display: block;
   margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  .profile-container {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile-container {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .profile-container {
+    max-width: 250px;
+  }
+
+  .save-button {
+    width: 100;
+  }
 }

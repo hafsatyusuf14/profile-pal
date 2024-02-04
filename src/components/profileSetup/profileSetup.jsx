@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import "./profileSetup.css";
+import styles from "./profileSetup.module.css"; // Import CSS module
 import { ReactComponent as Logo } from "../logos/logo.svg";
 import { ReactComponent as Upload } from "../logos/upload.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProfileSetup = () => {
   const navigate = useNavigate();
@@ -17,11 +19,9 @@ const ProfileSetup = () => {
 
   const saveUserData = (userData) => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    // Create a URL for the profile picture if it exists
     const profilePictureURL = userData.profilePicture
       ? URL.createObjectURL(userData.profilePicture)
       : null;
-    // Create a new user object with profile picture URL
     const newUser = {
       firstName: userData.firstName,
       lastName: userData.lastName,
@@ -32,23 +32,25 @@ const ProfileSetup = () => {
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
-    console.log(newUser); // Log the new user object with the profile picture URL
+    console.log(newUser);
+    toast.success("Signup successful!"); // Show toast after successful signup
   };
 
   return (
-    <div className="profile">
-      <div className="logo">
+    <div className={styles.profile}>
+      <ToastContainer /> {/* Toast container for displaying alerts */}
+      <div className={styles.logo}>
         <Logo />
       </div>
-
-      <div className="center-container">
-        <div className="profile-container">
+      <div className={styles["center-container"]}>
+        <div className={styles["profile-container"]}>
           <Formik
             initialValues={{
               firstName: "",
               lastName: "",
               mobileNumber: "",
               dob: "",
+              profilePicture: "",
             }}
             validationSchema={Yup.object({
               firstName: Yup.string().required("First Name is required"),
@@ -60,21 +62,26 @@ const ProfileSetup = () => {
             })}
             onSubmit={(values) => {
               const email = localStorage.getItem("email");
-              // Combine email with other form values and profile picture
               const userData = { ...values, email, profilePicture };
               console.log(userData);
-              // Save user data to localStorage
               saveUserData(userData);
-              // Navigate to dashboard
-              navigate("/dashboard");
+              if (saveUserData) {
+                toast.success("Signup successful!");
+                navigate("/dashboard");
+              } else {
+                toast.error("Signup failed!");
+              }
             }}
           >
             {(formik) => (
               <Form style={{ width: "100%" }}>
-                <div className="profile-picture-container">
-                  <div className="profile-picture">
+                <div className={styles["profile-picture-container"]}>
+                  <div className={styles["profile-picture"]}>
                     {profilePicture ? (
-                      <label htmlFor="profilePicture" className="upload-label">
+                      <label
+                        htmlFor="profilePicture"
+                        className={styles["upload-label"]}
+                      >
                         <img
                           src={URL.createObjectURL(profilePicture)}
                           alt="Profile"
@@ -86,7 +93,10 @@ const ProfileSetup = () => {
                         />
                       </label>
                     ) : (
-                      <label htmlFor="profilePicture" className="upload-label">
+                      <label
+                        htmlFor="profilePicture"
+                        className={styles["upload-label"]}
+                      >
                         <Upload height={100} width={100} />{" "}
                       </label>
                     )}
@@ -99,75 +109,77 @@ const ProfileSetup = () => {
                       onChange={handleFileChange}
                     />
                   </div>
-                  <div className="upload-container">
-                    <span className="upload">Click to upload profile</span>
+                  <div className={styles["upload-container"]}>
+                    <span className={styles.upload}>
+                      Click to upload profile photo
+                    </span>
                   </div>
                 </div>
 
-                <div className="name-group">
-                  <div className="profile-group">
+                <div className={styles["name-group"]}>
+                  <div className={styles["profile-group"]}>
                     <label htmlFor="firstName">First Name</label>
                     <Field
                       type="text"
                       id="firstName"
                       name="firstName"
-                      className="input"
+                      className={styles.input}
                     />
                     <ErrorMessage
                       name="firstName"
                       component="div"
-                      className="error"
+                      className={styles.error}
                     />
                   </div>
 
-                  <div className="profile-group">
+                  <div className={styles["profile-group"]}>
                     <label htmlFor="lastName">Last Name</label>
                     <Field
                       type="text"
                       id="lastName"
                       name="lastName"
-                      className="input"
+                      className={styles.input}
                     />
                     <ErrorMessage
                       name="lastName"
                       component="div"
-                      className="error"
+                      className={styles.error}
                     />
                   </div>
                 </div>
 
-                <div className="profile-group">
+                <div className={styles["profile-group"]}>
                   <label htmlFor="mobileNumber">Mobile Number</label>
                   <Field
                     type="text"
                     id="mobileNumber"
                     name="mobileNumber"
-                    className="input"
+                    className={styles.input}
                   />
                   <ErrorMessage
                     name="mobileNumber"
                     component="div"
-                    className="error"
+                    className={styles.error}
                   />
                 </div>
 
-                <div className="profile-group">
+                <div className={styles["profile-group"]}>
                   <label htmlFor="dob">Date of Birth</label>
-                  <Field type="date" id="dob" name="dob" className="input" />
-                  <ErrorMessage name="dob" component="div" className="error" />
+                  <Field
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    className={styles.input}
+                  />
+                  <ErrorMessage
+                    name="dob"
+                    component="div"
+                    className={styles.error}
+                  />
                 </div>
-                <div className="button-container">
+                <div className={styles["button-container"]}>
                   <button
-                    className="back-button"
-                    type="button"
-                    onClick={() => {
-                      // Handle back button click here
-                    }}
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="create-account-button"
+                    className={styles["save-button"]}
                     type="submit"
                     disabled={!formik.isValid || !formik.dirty}
                   >

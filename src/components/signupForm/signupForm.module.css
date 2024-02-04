@@ -1,18 +1,18 @@
-.form-container {
+.formContainer {
   width: 500px;
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 30px;
 }
 
-.form-container label {
+.formContainer label {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
-.form-container input {
+.formContainer input {
   width: calc(100% - 30px);
   font-size: 16px;
   padding: 15px;
@@ -23,12 +23,12 @@
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.form-container input:focus {
+.formContainer input:focus {
   border-color: #4caf50;
   box-shadow: 0 0 9px hsl(168, 58%, 75%);
 }
 
-.form-container input.error-border {
+.formContainer input.error-border {
   border-color: red; /* Set border color to red for inputs with errors */
 }
 
@@ -38,7 +38,7 @@
   /* Adjust error message font size */
 }
 
-.submit-button {
+.submitButton {
   width: 100%;
   color: white;
   font-size: 16px;
@@ -49,4 +49,21 @@
   padding: 20px;
   display: block;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    width: 600px;
+  }
+}
+
+@media (max-width: 425px) {
+  .formContainer {
+    width: 350px;
+  }
+}
+@media (max-width: 375px) {
+  .formContainer {
+    width: 250px;
+  }
 }
