@@ -1,0 +1,31 @@
+.dashboardContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.userCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.userCardWrapper {
+  width: calc(33.33% - 20px); /* 3 cards per row for larger devices */
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+@media screen and (max-width: 1024px) {
+  .userCardWrapper {
+    width: calc(50% - 20px); /* 2 cards per row for tablets */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .userCardWrapper {
+    width: calc(100% - 20px); /* 1 card per row for phones */
+  }
+}

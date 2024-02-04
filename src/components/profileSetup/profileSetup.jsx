@@ -50,7 +50,6 @@ const ProfileSetup = () => {
               const userData = { ...values, email, profilePicture };
               console.log(userData);
               // Save user data to localStorage
-              localStorage.setItem("userData", JSON.stringify(userData));
               saveUserData(userData);
               // Navigate to dashboard
               navigate("/dashboard");

@@ -37,10 +37,6 @@
   font-size: 0.8em;
   /* Adjust error message font size */
 }
-.error.show {
-  display: block;
-  color: red;
-}
 
 .submit-button {
   width: 100%;

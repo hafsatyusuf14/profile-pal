@@ -7,6 +7,7 @@ import "./signupForm.css";
 const SignupForm = () => {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const isEmailTaken = (email, existingUsers) => {
     return existingUsers.some((user) => user.email === email);
@@ -35,13 +36,9 @@ const SignupForm = () => {
           const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
           if (isEmailTaken(values.email, existingUsers)) {
             setSubmitting(false);
-            setSubmitted(true);
+            setEmailError("Email is already in use");
           } else {
-            existingUsers.push({
-              email: values.email,
-              password: values.password,
-            });
-            localStorage.setItem("users", JSON.stringify(existingUsers));
+            localStorage.setItem("email", values.email); // Store email in localStorage
             navigate("/profileSetup");
           }
         }}
@@ -60,6 +57,7 @@ const SignupForm = () => {
                     : ""
                 }`}
               />
+              {emailError && <div className="error">{emailError}</div>}
             </div>
 
             <div className="form-group">
@@ -106,7 +104,10 @@ const SignupForm = () => {
               className="submit-button"
               type="submit"
               disabled={!formik.isValid || !formik.dirty}
-              onClick={() => setSubmitted(true)}
+              onClick={() => {
+                setSubmitted(true);
+                setEmailError("");
+              }}
             >
               Continue
             </button>
