@@ -1,7 +1,16 @@
 import React from "react";
 import styles from "./userCard.module.css";
 
-const UserCard = ({ firstname, lastname, email, image, dob, mobile }) => {
+const UserCard = ({
+  firstname,
+  lastname,
+  email,
+  image,
+  dob,
+  mobile,
+  showEditButton,
+  onButtonClick,
+}) => {
   return (
     <div className={styles.userCard}>
       <div className={styles.avatarContainer}>
@@ -18,9 +27,29 @@ const UserCard = ({ firstname, lastname, email, image, dob, mobile }) => {
         <h3 className={styles.userName}>
           {firstname} {lastname}
         </h3>
-        <p className={styles.userEmail}>{email}</p>
-        <p className={styles.userEmail}>{dob}</p>
-        <p className={styles.userEmail}>{mobile}</p>
+        <p className={styles.userEmail}>
+          {" "}
+          <strong>Email: </strong>
+          {email}
+        </p>
+        <p className={styles.userEmail}>
+          <strong>DOB: </strong>
+          {dob}
+        </p>
+        <p className={styles.userEmail}>
+          <strong>Mobile:</strong> {mobile}
+        </p>
+      </div>
+      <div className={styles.buttonContainer}>
+        {" "}
+        {/* Add a container for the button */}
+        {showEditButton && (
+          <button onClick={onButtonClick} className={styles.editButton}>
+            Edit profile
+          </button>
+        )}
+        {!showEditButton && <div className={styles.buttonPlaceholder} />}{" "}
+        {/* Add a placeholder for the button */}
       </div>
     </div>
   );

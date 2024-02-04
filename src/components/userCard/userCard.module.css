@@ -1,3 +1,5 @@
+/* userCard.module.css */
+
 .userCard {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,6 @@
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  /* Using a gradient background */
   background: linear-gradient(
     135deg,
     hsl(168, 58%, 85%),
@@ -51,4 +52,29 @@
 .userEmail {
   font-size: 0.9rem;
   color: #666;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.editButton {
+  background-color: #7e6479;
+  padding: 15px 20px;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px; /* Add margin to separate button from placeholder */
+}
+
+.editButton:hover {
+  background-color: #ab97a7;
+}
+
+.buttonPlaceholder {
+  width: 100px; /* Adjust width to match button */
+  height: 50px; /* Adjust height to match button */
+  margin-right: 10px; /* Add margin to separate placeholder from button */
 }

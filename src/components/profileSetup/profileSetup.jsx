@@ -1,8 +1,9 @@
+// Import the necessary modules
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import styles from "./profileSetup.module.css"; // Import CSS module
+import styles from "./profileSetup.module.css";
 import { ReactComponent as Logo } from "../logos/logo.svg";
 import { ReactComponent as Upload } from "../logos/upload.svg";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,6 +18,7 @@ const ProfileSetup = () => {
     setProfilePicture(file);
   };
 
+  // Function to save user data and display success message
   const saveUserData = (userData) => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     const profilePictureURL = userData.profilePicture
@@ -32,8 +34,14 @@ const ProfileSetup = () => {
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
-    console.log(newUser);
-    toast.success("Signup successful!"); // Show toast after successful signup
+
+    // Show a success toast message for 5 seconds
+    toast.success("Signup successful!");
+    setTimeout(() => {
+      // Clear the success toast after 5 seconds
+      toast.dismiss();
+      navigate("/dashboard");
+    }, 500);
   };
 
   return (
@@ -63,14 +71,7 @@ const ProfileSetup = () => {
             onSubmit={(values) => {
               const email = localStorage.getItem("email");
               const userData = { ...values, email, profilePicture };
-              console.log(userData);
               saveUserData(userData);
-              if (saveUserData) {
-                toast.success("Signup successful!");
-                navigate("/dashboard");
-              } else {
-                toast.error("Signup failed!");
-              }
             }}
           >
             {(formik) => (

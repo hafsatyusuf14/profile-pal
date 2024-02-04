@@ -4,9 +4,46 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+# Project Title
 
-### `npm start`
+A brief description of your React.js project.
+
+## Instructions to Run Locally
+
+Follow these steps to run the application on your local machine:
+
+### 1. Clone the Repository
+
+First, clone the project repository to your local machine using the following command in your terminal or command prompt:
+
+```bash
+git clonehttps://github.com/hafsatyusuf14/profile-pal.git
+
+```
+
+### 2. Navigate to the Project Directory.
+
+Navigate to the directory of the cloned project by running the following command:
+
+```bash
+    cd profile-pal
+```
+
+### 3. Install dependencies locally.
+
+Before running the application, you need to install its dependencies. You can do this by running the following command:
+
+```bash
+    npm install
+```
+
+### 4. Start the Development Server
+
+Once all dependencies are installed, start the development server by running the following command:
+
+```bash
+   npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,7 +51,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### 5. Explore the Application
+
+You can now explore the application in your web browser. Make sure to check out all the features and functionalities.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.

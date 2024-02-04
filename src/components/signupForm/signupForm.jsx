@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import styles from "./signupForm.module.css"; // Import CSS module file for styling
+import styles from "./signupForm.module.css";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -11,6 +11,18 @@ const SignupForm = () => {
 
   const isEmailTaken = (email, existingUsers) => {
     return existingUsers.some((user) => user.email === email);
+  };
+
+  //function to save email and take it to the next page to complete signup
+  const handleEmailSubmission = (values, { setSubmitting }) => {
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    if (isEmailTaken(values.email, existingUsers)) {
+      setSubmitting(false);
+      setEmailError("Email is already in use");
+    } else {
+      localStorage.setItem("email", values.email);
+      navigate("/profileSetup");
+    }
   };
 
   return (
@@ -32,19 +44,11 @@ const SignupForm = () => {
             .oneOf([Yup.ref("password"), null], "Passwords must match")
             .required("Confirm Password is required"),
         })}
-        onSubmit={(values, { setSubmitting }) => {
-          const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-          if (isEmailTaken(values.email, existingUsers)) {
-            setSubmitting(false);
-            setEmailError("Email is already in use");
-          } else {
-            localStorage.setItem("email", values.email);
-            navigate("/profileSetup");
-          }
-        }}
+        onSubmit={handleEmailSubmission}
       >
         {(formik) => (
           <Form>
+            {/* Form fields */}
             <div className={styles.formGroup}>
               <label htmlFor="email" className={styles.label}>
                 Email

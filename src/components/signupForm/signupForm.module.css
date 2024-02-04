@@ -50,6 +50,12 @@
   display: block;
   margin: 0 auto;
 }
+.submitButton:disabled {
+  /* Your disabled button styles */
+  background-color: #27a9a1; /* Change background color */
+  opacity: 80%; /* Change text color */
+  cursor: not-allowed; /* Change cursor */
+}
 
 @media (max-width: 768px) {
   .formContainer {
